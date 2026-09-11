@@ -1,101 +1,120 @@
-
-# Sistema de Turnos de Atención
+ Control de productos de una tienda
 
  1. Nombre de la aplicación
 
-**Sistema de Turnos de Atención**
+**Control de productos de una tienda**
 
- 2. Descripción no técnica del problema
+2. Descripción no técnica del problema
 
-La aplicación busca solucionar la organización de personas que esperan ser atendidas.
+La aplicación permite llevar un control sencillo de los productos registrados en una pequeña tienda.
 
-En una fila de atención es importante respetar el orden de llegada. Por esta razón, el sistema permite registrar personas, mostrar quién está esperando y atender primero a la persona que llegó primero.
+El sistema permite agregar, consultar, buscar, modificar y eliminar productos. De esta manera, se puede conocer qué productos están registrados y en qué posición se encuentran.
 
-3. Descripción de la solución
+La aplicación tiene una capacidad máxima de cinco productos.
 
-El programa simula un sistema de turnos. Las personas son agregadas a una cola y permanecen en ella hasta que llega su turno.
+ 3. Descripción de la solución
 
-El sistema permite:
+El programa fue desarrollado en Python y utiliza un vector para almacenar los nombres de los productos.
 
-* Agregar personas a la cola.
-* Mostrar las personas que están esperando.
-* Consultar quién será atendido.
-* Atender y retirar a la primera persona.
-* Controlar cuando la cola está llena.
-* Controlar cuando la cola está vacía.
+El usuario puede seleccionar diferentes opciones desde un menú:
+
+* Agregar producto.
+* Mostrar productos.
+* Buscar producto.
+* Modificar producto.
+* Eliminar producto.
+* Salir del programa.
+
+El programa también controla situaciones especiales, como intentar agregar productos cuando el vector está lleno o realizar operaciones cuando no existen productos registrados.
 
  4. Estructura de datos seleccionada
 
-La estructura seleccionada es una **cola implementada mediante un vector**.
+La estructura seleccionada es un **vector o arreglo**.
 
-La cola utiliza el principio FIFO (First In, First Out), lo que significa que el primer elemento en entrar es el primero en salir.
+El vector permite almacenar varios elementos y acceder a ellos mediante una posición o índice.
 
-El vector almacena los nombres de las personas que están esperando.
+En esta aplicación cada posición representa un producto.
 
- 5. Justificación técnica
+Por ejemplo:
 
-La cola es adecuada para este problema porque las personas deben ser atendidas en el mismo orden en que llegan.
+Índice:     0        1        2
+Producto: Arroz    Leche    Huevos
 
-La operación de inserción se realiza al final de la cola mediante `append()`, mientras que la eliminación se realiza desde la primera posición mediante `pop(0)`.
+Los índices comienzan desde cero.
 
-Una ventaja es que permite representar fácilmente una fila de espera. Una limitación es que la capacidad establecida es fija y retirar el primer elemento puede requerir desplazar los demás elementos.
+5. Justificación técnica
+
+Se seleccionó un vector porque la aplicación necesita almacenar una cantidad determinada de productos y acceder a ellos mediante posiciones.
+
+La estructura permite agregar elementos, recorrerlos para mostrarlos, buscar productos, modificar posiciones y eliminar elementos.
+
+Una de sus ventajas es que es sencilla de implementar y permite acceder directamente a una posición mediante su índice.
+
+Una limitación es que la capacidad establecida para esta solución es fija. Además, cuando se elimina un elemento, los elementos posteriores pueden cambiar de posición.
 
  6. Análisis de otra estructura
 
-Otra estructura que podría utilizarse es una pila implementada mediante un vector.
+Una estructura alternativa sería una matriz.
 
-La pila utiliza el principio LIFO, donde el último elemento en entrar es el primero en salir.
+La matriz organiza los datos mediante filas y columnas. Podría utilizarse para almacenar información adicional como nombre, cantidad y precio de cada producto.
 
-Esta estructura no sería adecuada para el sistema de turnos, porque una persona que llegara de última sería atendida antes que las personas que llegaron anteriormente.
+Sin embargo, para la solución propuesta solamente se necesita almacenar los nombres de los productos. Por esta razón, una matriz sería más compleja de lo necesario.
 
-Por lo tanto, la cola resulta más apropiada para este problema.
+El vector resulta más sencillo y adecuado para el problema planteado.
 
  7. Instrucciones para ejecutar el programa
 
 1. Descargar o clonar el repositorio.
-2. Tener instalado Python.
-3. Abrir el archivo `sistema_turnos.py`.
-4. Ejecutar el programa desde un entorno como Visual Studio Code, PyCharm o la terminal.
+2. Tener Python instalado.
+3. Abrir el archivo `control_productos.py`.
+4. Ejecutar el programa desde Visual Studio Code, PyCharm o una terminal.
 
 Comando:
-
-python sistema_turnos.py
+python control_productos.py
 
 
  8. Casos de prueba
 
-Caso normal
+ Caso normal
 
-Se agregan Ana, Carlos y María.
+Se registran los siguientes productos:
 
-Resultado:
+* Arroz
+* Leche
+* Huevos
 
-[Ana, Carlos, María]
+Después se muestran los productos y se realiza una búsqueda.
 
-La primera persona atendida es Ana.
+El sistema permite encontrar el producto y mostrar su posición.
 
-### Caso límite: cola llena
+### Caso límite: vector lleno
 
-Se agregan personas hasta alcanzar la capacidad máxima.
+Se registran cinco productos.
 
-Cuando se intenta agregar otra persona, el programa informa:
-La cola está llena. No se puede agregar más personas.
+Cuando se intenta agregar un sexto producto, el sistema muestra:
 
-Caso límite: cola vacía
 
-Después de atender a todas las personas, se intenta atender nuevamente.
+El vector está lleno. No se pueden agregar más productos.
 
-Resultado:
 
-La cola está vacía. No hay personas para atender.
+### Caso límite: vector vacío
 
+Después de eliminar todos los productos, se intenta mostrar la información.
+
+El sistema muestra:
+
+No hay productos registrados.
  9. Limitaciones y posibles mejoras
 
-La principal limitación es que la capacidad de la cola es fija. Además, retirar el primer elemento del vector puede requerir desplazar los elementos restantes.
+La principal limitación es que el vector tiene una capacidad máxima establecida de cinco productos.
 
-Como posible mejora se podría desarrollar una interfaz gráfica para facilitar el registro y visualización de los turnos.
+Otra limitación es que al eliminar un producto los elementos posteriores pueden cambiar de posición.
 
-10. Video
+Como mejora se podría permitir almacenar una cantidad mayor de productos y agregar información como precio, cantidad disponible y categoría.
+
+También se podría desarrollar una interfaz gráfica para facilitar el uso de la aplicación.
+
+ 10. Video
 
 **Enlace del video:**
 [PEGAR AQUÍ EL ENLACE DEL VIDEO]
